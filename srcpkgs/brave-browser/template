@@ -1,5 +1,5 @@
 # Template file for 'brave-bin'
-pkgname=brave-bin
+pkgname=brave-browser
 version=1.85.118
 revision=1
 only_for_archs="x86_64"

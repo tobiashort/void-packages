@@ -1,0 +1,23 @@
+pkgname=1password
+version=8.11.22
+revision=2
+only_for_archs="x86_64"
+short_desc="Password Manager"
+maintainer="Tobias Hort <mail@tobiashort.com>"
+hostmakedepends="tar xz"
+license="subscription"
+homepage="https://1password.com"
+distfiles="https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb"
+checksum=85475ecb362b9f499d00348d4dcae40d8e96669490e66990c59985d42dd46009
+nostrip=yes
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/1password-latest.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+	mkdir ${DESTDIR}/usr/bin
+	ln -s /opt/1Password/1password ${DESTDIR}/usr/bin/1password
+}

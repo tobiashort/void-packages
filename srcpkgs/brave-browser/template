@@ -1,7 +1,6 @@
-# Template file for 'brave-bin'
 pkgname=brave-browser
 version=1.85.118
-revision=1
+revision=2
 only_for_archs="x86_64"
 short_desc="Secure, fast and private web browser with ad blocker"
 maintainer="Tobias Hort <mail@tobiashort.com>"
@@ -33,4 +32,6 @@ do_install() {
 	# Remove the Debian/Ubuntu crontab
 	rm -rf ${DESTDIR}/etc
 	rm -rf ${DESTDIR}/opt/brave.com/brave/cron
+
+	mv ${DESTDIR}/usr/bin/brave-browser-stable ${DESTDIR}/usr/bin/brave
 }

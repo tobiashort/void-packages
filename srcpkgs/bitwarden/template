@@ -1,0 +1,20 @@
+pkgname=bitwarden
+version=2025.12.0
+revision=1
+only_for_archs="x86_64"
+short_desc="Password Manager"
+maintainer="Tobias Hort <mail@tobiashort.com>"
+depends="fuse"
+license="GPL v3.0 / Bitwarden License v1.0"
+homepage="https://bitwarden.com"
+checksum=df908fe97873360e7e6b477342f4f074224c2cfdddb1fa63218bf6ca71d9e91f
+nostrip=yes
+
+do_fetch() {
+	$XBPS_FETCH_CMD -s -o bitwarden "https://bitwarden.com/download/?app=desktop&platform=linux&variant=appimage"
+	echo "${checksum}  bitwarden" | sha256sum -c -
+}
+
+do_install() {
+	install -D -m 755 ../bitwarden ${DESTDIR}/usr/bin/bitwarden
+}
